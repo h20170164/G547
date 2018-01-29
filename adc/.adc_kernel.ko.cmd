@@ -1,0 +1,1 @@
+cmd_/home/ansh/EEEG547/adc/adc_kernel.ko := ld -r -m elf_x86_64 -T ./scripts/module-common.lds --build-id  -o /home/ansh/EEEG547/adc/adc_kernel.ko /home/ansh/EEEG547/adc/adc_kernel.o /home/ansh/EEEG547/adc/adc_kernel.mod.o ;  true
