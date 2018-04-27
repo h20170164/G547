@@ -1,0 +1,19 @@
+Step1: This project directory contains buzzer_firmware folder and it contains main.hex file which is needed to be uploaded to the usb hw device
+which we have prepared using ATMEGA 8 microcontroller.
+	Note:- Generation and flashing of Hex file is done by opening a terminal in buzzer_folder and typing the following commands
+			a. make hex
+			b. sudo avrdude -c usbasp -p m8 -U flash:w:main.hex  
+
+Step2: This project directory contains buzzer.c file which is the host side driver written to poll the hw device with usb control messages in keypress_pollfn() function which is inturn called from keypress_probe() function. Probe function basically calls whenever usb hw device is attached. Whenever usb control messg is received by usb hw device, portB0(pin 14) is toggled and since it is declared as output pin in firmware, buzzer which is connected to pin 14 will ring periodically.
+
+	Note:- use following commands to compile and insert module in kernel
+		a. make clean
+		b. make all
+		c. sudo insmod buzzer.ko
+		(for checking kernel log use dmesg -wH)
+
+
+ Removing the module from kernel is done by 
+		sudo rmmod buzzer.ko 
+
+
